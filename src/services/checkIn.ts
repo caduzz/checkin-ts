@@ -12,12 +12,21 @@ export default class CheckinService {
     }
 
     checkin_register = async (data:ICheckinRegister) : Promise<ICheckinPromise> => {
+        const user = await this.prisma.user.findUnique({
+            where: {
+                id: data.userId
+            }
+        })
+
+
+        if(user === null)return this.msgReturn(`Crie uma conta para fazer checkin`, true, 200)
+
         const checkIn = await this.prisma.checkIn.create({data})
-        
+
         if(checkIn){
-            return this.msgReturn(`Sucess To Create Checkin - ${data.type}`, false, 200)
+            return this.msgReturn(`Sucesso ao criar checkin`, false, 200)
         }else{
-            return this.msgReturn('Erro To Create Checkin', false, 400)
+            return this.msgReturn('Erro ao criar checkin', true, 400)
         }
     }
     checkin_list = async ( userId: string ) : Promise<ICheckin[]> => {

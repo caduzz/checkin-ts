@@ -1,4 +1,4 @@
-import { PrismaClient } from "@prisma/client";
+import { PrismaClient, Prisma } from "@prisma/client";
 import { IUserPromise, IUserLogin, IUserRegister } from "../@types/user";
 
 import bcrypt from 'bcryptjs';
@@ -16,17 +16,31 @@ export default class UserService {
       }
     }
     
-    create_user = async ({ email, name, password }:IUserRegister): Promise<IUserPromise> => {
+    create_user = async ({ id, email, name, password }:IUserRegister): Promise<IUserPromise> => {
         const salt = await bcrypt.genSalt(10);
 
         password = await bcrypt.hash(password, salt);
 
-        const user = await this.prisma.user.create({data: {email, name, password}})
+        const validateEmail = await this.prisma.user.findMany({
+            where: {
+                OR: [
+                    {id},
+                    {email}
+                ]
+            }
+        })
+        console.log('teste')
+
+        if(validateEmail.length != 0){
+            return this.msgReturn('Erro usuario ja registrado', true, 500)
+        }
+
+        const user = await this.prisma.user.create({data: {id, email, name, password}})
 
         if(user){
-            return {msg: 'User Create Sucess', error: false, status: 200}
+            return this.msgReturn('Sucesso ao criar usuario', false, 200)
         }else {
-            return {msg: 'Erro To Create User', error: false, status: 404}
+            return this.msgReturn('Erro ao criar usuario', true, 404)
         }
     }
     login_user = async ({ email, password }:IUserLogin) : Promise<IUserPromise> => {

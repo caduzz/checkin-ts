@@ -16,15 +16,15 @@ export default class UserController {
     login = async () => {
         const data:IUserLogin = this.req.body
         
-        const { msg, status } = await this.service.login_user(data)
+        const { msg, error, status } = await this.service.login_user(data)
         console.log(msg)
-        this.res.json({msg}).status(status)
+        this.res.json({ msg, error }).status(status)
     }
     register = async () => {
         const data:IUserRegister = this.req.body
         
-        const { msg, status } = await this.service.create_user(data)
+        const { msg, error, status } = await this.service.create_user(data)
         console.log(msg)
-        this.res.json({msg}).status(status)
+        this.res.json({ msg, error }).status(status)
     }
 }

@@ -1,3 +1,5 @@
+type CheckinType = 'entry' | 'exit'
+
 export interface ICheckin {
     id: string,
     type: string,
@@ -6,7 +8,7 @@ export interface ICheckin {
 }
 
 export interface ICheckinRegister {
-    type: 'entry' | 'exit',
+    type: CheckinType,
     userId: string
 }
 

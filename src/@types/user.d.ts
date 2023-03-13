@@ -10,11 +10,13 @@ export interface IUser {
 }
 
 export interface IUserLogin {
+    id: string,
     email: string,
     password: string
 }
 
 export interface IUserRegister {
+    id: string,
     email: string
     password: string,
     name: string,

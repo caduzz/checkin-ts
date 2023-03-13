@@ -1,4 +1,5 @@
 import { Request, Response } from "express"
+import { ICheckinRegister } from "../@types/checkIn";
 import CheckinService from "../services/checkIn"
 
 export default class CheckinController {
@@ -13,22 +14,21 @@ export default class CheckinController {
     }
     
     entry = async () => {
-        const { msg, status } = await this.service.checkin_register({
-            type: "entry", 
-            userId: '936ac666-b60c-49aa-ae2b-aad2eab36215'
-        })
-        this.res.json({ msg }).status(status)
+        const data: ICheckinRegister = {type: 'entry', ...this.req.body}
+
+        const { msg, error, status } = await this.service.checkin_register(data)
+        this.res.json({ msg, error }).status(status)
     }
     exit = async () => {
-        const { msg, status } = await this.service.checkin_register({
-            type: "exit", 
-            userId: '936ac666-b60c-49aa-ae2b-aad2eab36215'
-        })
+        const data: ICheckinRegister = {type: 'exit', ...this.req.body}
+
+        const { msg, error, status } = await this.service.checkin_register(data)
         
-        this.res.json({ msg }).status(status)
+        this.res.json({ msg, error }).status(status)
     }
     list = async () => {
-        const checkIn = await this.service.checkin_list('936ac666-b60c-49aa-ae2b-aad2eab36215')
+        const { userId } = this.req.body
+        const checkIn = await this.service.checkin_list(userId)
         this.res.json({checkIn})
     }
 }
