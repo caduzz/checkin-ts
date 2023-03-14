@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.ts",
   "scripts": {
-    "build": "npm install && npm run start",
+    "build": "npm install && npm run dev",
     "dev::migrate": "npx prisma migrate dev",
     "dev": "tsnd --exit-child src/server.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
