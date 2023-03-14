@@ -4,7 +4,10 @@ import { ICheckinRegister } from '../@types/checkIn';
 
 export default async function registerCheckin(req: Request, res: Response, next: NextFunction) {
   const schema = Joi.object<ICheckinRegister>({
-    userId: Joi.string().required(),
+    userId: Joi
+      .string()
+      .required()
+      .messages({'string.': 'Porfarvor informe um `user id`'}),
   });
 
   const { error } = schema.validate(req.body);

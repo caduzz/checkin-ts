@@ -4,10 +4,21 @@ import { IUserRegister, IUserPromise } from '../@types/user';
 
 export default async function registerUser(req: Request, res: Response, next: NextFunction) {
   const schema = Joi.object<IUserRegister>({
-    id: Joi.string().required(),
-    email: Joi.string().email().required(),
-    name: Joi.string().required(),
-    password: Joi.string().required(),
+    id: Joi
+      .string()
+      .required(),
+    email: Joi
+      .string()
+      .email()
+      .required()
+      .messages({
+        'string.email': `Porfavor informe um \`email\` valido`
+      }),
+    name: Joi.string()
+      .required(),
+    password: Joi
+      .string()
+      .required(),
 
   })
 
