@@ -56,7 +56,7 @@ ou
 yarn dev
 ```
 
-5. A API estará disponível em http://localhost:3000.
+5. A API estará disponível em `http://localhost:3000`.
 ##  Uso
 ### Fazer Check-in
 
