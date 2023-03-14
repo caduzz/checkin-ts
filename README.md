@@ -63,7 +63,7 @@ Para fazer check-in em um evento, envie um POST para `/checkin/entry` ou `/check
 
 ```json
 {
-  "userId": number,
+  "userId": 25020535635,
 }
 ```
 O campo `eventId` é obrigatório e deve ser uma string com o ID do evento. Os campos name e email são obrigatórios e devem ser strings com o `nome` e o `email` do usuário, respectivamente.
@@ -73,7 +73,7 @@ Para listar check-ins, envie um GET para `/checkin/list`. A resposta será um ob
 
 ```json
 {
-  "user_id": number,
+  "user_id": 53653665565,
 }
 ```
 
