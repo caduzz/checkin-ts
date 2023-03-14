@@ -17,6 +17,7 @@ MongoDB
 
 Instalação
 Clone o repositório para o seu sistema local:
+``` bash ```
 ```bash
 git clone https://github.com/caduzz/checkin-ts.git
 Instale as dependências do projeto usando o gerenciador de pacotes de sua escolha:
