@@ -1,6 +1,6 @@
 Olá! Aqui está um modelo de documentação para o projeto "checkin-ts" hospedado no GitHub:
 
-Checkin-ts
+#Checkin-ts
 Um projeto de check-in simples construído em TypeScript.
 
 Descrição
@@ -14,12 +14,18 @@ Para executar o projeto, você precisa ter o seguinte instalado em seu sistema:
 Node.js
 NPM ou Yarn
 MongoDB
+
 Instalação
 Clone o repositório para o seu sistema local:
-bash
-Copy code
-git clone https://github.com/caduzz/checkin-ts.git
-Instale as dependências do projeto usando o gerenciador de pacotes de sua escolha:
+{
+  {
+  bash
+  }
+   {
+    git clone https://github.com/caduzz/checkin-ts.git
+    Instale as dependências do projeto usando o gerenciador de pacotes de sua escolha:
+  }
+}
 bash
 Copy code
 cd checkin-ts
