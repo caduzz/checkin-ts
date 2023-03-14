@@ -4,7 +4,7 @@ Olá! Aqui está um modelo de documentação para o projeto "checkin-ts" hospeda
 
 Um projeto de check-in simples construído em TypeScript.
 
-##Descrição
+## Descrição
 Este projeto fornece uma API para um sistema de check-in. O sistema permite que usuários façam check-in em eventos. Ele mantém um registro de usuários que fizeram check-in e fornece estatísticas sobre o número de check-ins para cada evento.
 
 A API é construída em TypeScript usando o framework Express.js. Os dados são armazenados em um banco de dados MongoDB usando o ODM Mongoose.
